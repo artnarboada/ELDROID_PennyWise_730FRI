@@ -1,4 +1,37 @@
 <resources>
+
+    //LOGIN SCREEN STRING
     <string name="app_name">PennyWise</string>
     <string name="login_text">LOGIN</string>
+    <string name="Sign_msg">Sign in to PennyWise.</string>
+    <string name="email_tb">   Email</string>
+    <string name="pass_tb">   Password</string>
+    <string name="forgot">Forgot Password?</string>
+    <string name="login_btn">LOGIN</string>
+    <string name="acc_qts">Don\'t have an account yet? Sign up</string>
+
+
+    <!--    //REGISTER SCREEN STRING-->
+    <string name="rg_msg">REGISTER</string>
+    <string name="reg_desc">Create an account.</string>
+    <string name="reg_email_tb">   Email</string>
+    <string name="reg_pass_tb">   Password</string>
+    <string name="reg_confirm_tb">   Confirm Password</string>
+    <string name="create_btn">CREATE</string>
+    <string name="qts_reg">Already have an account? Login.</string>
+
+    <!--    //FORGOT PASSWORD SCREEN STRING-->
+    <string name="fg_back">Back</string>
+    <string name="fg_forgot">Forgot</string>
+    <string name="fg_pass">Password</string>
+    <string name="fg_newPass">New Password</string>
+    <string name="fg_guide">Enter your email or username and we\'ll send you a\nlink to change your password</string>
+    <string name="fg_hint">   pennywise@gmail.com</string>
+    <string name="fg_send">SEND</string>
+
+    <!--VERIFY SCREEN STRING-->
+    <string name="ver_msg">Verify</string>
+    <string name="ver_email">Email</string>
+    <string name="ver_sentmsg">We have sent you an email to verify your\naccount.</string>
+
 </resources>
