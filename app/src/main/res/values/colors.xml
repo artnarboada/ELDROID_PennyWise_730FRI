@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#e60711</color>
     <color name="shadow">#F44449</color>
+    <color name="tint">#FFFFFF</color>
 </resources>
