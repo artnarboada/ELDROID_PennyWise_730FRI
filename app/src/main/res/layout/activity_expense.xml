@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    tools:context=".Expense">
+
+    <!-- Back Button -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/back_arrow"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fg_back"
+            android:textColor="@color/red"
+            android:textSize="16sp"
+            android:paddingStart="8dp" />
+    </LinearLayout>
+
+    <!-- Icon and Title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="15dp">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/expense"
+            android:background="@drawable/rounded_red_background"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dash_expense"
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Budget Amount Input -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/Exp_name"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/text_box"
+        android:padding="8dp"
+        android:textColor="@color/red"
+        android:textColorHint="@color/red"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"/>
+
+<!--    Category-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/dash_cat"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="10dp"/>
+
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/text_box"
+        android:padding="8dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:spinnerMode="dropdown"
+        android:popupBackground="@color/white"
+        android:entries="@array/dropdown_options"/>
+
+<!--    Amount-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/Exp_amt"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/text_box"
+        android:padding="8dp"
+        android:textColor="@color/red"
+        android:textColorHint="@color/red"
+        android:layout_marginStart="15dp"
+        android:inputType="numberDecimal"
+        android:layout_marginEnd="15dp"/>
+
+<!--    Descriprion -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/Exp_desc"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@drawable/text_box"
+        android:padding="8dp"
+        android:textColor="@color/red"
+        android:textColorHint="@color/red"
+        android:layout_marginStart="15dp"
+        android:inputType="textImeMultiLine"
+        android:layout_marginEnd="15dp"/>
+
+    <!-- Add Plan Button -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/Exp_btn"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:background="@drawable/buttons"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>

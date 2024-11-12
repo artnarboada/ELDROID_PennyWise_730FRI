@@ -47,5 +47,29 @@
     <string name="dash_expense">Expense</string>
     <string name="dash_cat">Category</string>
 
+    //Temporary array for dropdown
+    <string-array name="dropdown_options">
+        <item>Option 1</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
 
+
+    //Budget Planning
+    <string name="BudP_title">Budget Planning</string>
+    <string name="BudP_amt">Budget Amount</string>
+    <string name="BudP_notes">Notes</string>
+    <string name="BudP_notesHint">Enter your notes here</string>
+    <string name="BudP_btn">ADD PLAN</string>
+
+
+    //Expense
+    <string name="Exp_name">Expense Name</string>
+    <string name="Exp_amt">Amount</string>
+    <string name="Exp_desc">Description</string>
+    <string name="Exp_btn">SUBMIT</string>
+
+    //Category
+    <string name="Cat_name">Category Name</string>
+    <string name="Cat_icons">Category Icons:</string>
 </resources>
