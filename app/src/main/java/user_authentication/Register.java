@@ -43,7 +43,7 @@ public class Register extends AppCompatActivity {
         loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Register.this, MainActivity.class); // Navigate to login screen
+                Intent intent = new Intent(Register.this, LoginActivity.class); // Navigate to login screen
                 startActivity(intent);
             }
         });

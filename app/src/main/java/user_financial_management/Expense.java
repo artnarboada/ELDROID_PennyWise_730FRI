@@ -1,6 +1,8 @@
 package user_financial_management;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +14,15 @@ public class Expense extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
+
+        LinearLayout backBtn = findViewById(R.id.backBtn);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 //        Spinner spinner = findViewById(R.id.categorySpinner);
 //        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(

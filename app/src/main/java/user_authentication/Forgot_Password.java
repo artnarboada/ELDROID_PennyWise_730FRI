@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,16 +18,21 @@ public class Forgot_Password extends AppCompatActivity {
         setContentView(R.layout.activity_forgot_password);
 
         Button sendEmail = findViewById(R.id.send_button);
+        LinearLayout backBtn = findViewById(R.id.backBtn);
 
         sendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(Forgot_Password.this, VerifyEmail.class);
                 startActivity(intent);
             }
         });
 
-
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

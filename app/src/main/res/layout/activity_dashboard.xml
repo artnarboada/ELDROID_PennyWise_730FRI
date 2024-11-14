@@ -157,8 +157,7 @@
             android:src="@drawable/filter"
             android:scaleType="centerInside"
             android:background="@drawable/rounded_red_background"
-            android:adjustViewBounds="true"
-            />
+            android:adjustViewBounds="true"/>
 
 
     </LinearLayout>

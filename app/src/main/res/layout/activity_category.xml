@@ -11,6 +11,7 @@
 
     <!-- Back Button -->
     <LinearLayout
+        android:id="@+id/backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -18,11 +19,12 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_marginBottom="16dp">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/back_arrow"/>
 
         <TextView
@@ -30,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="@string/fg_back"
             android:textColor="@color/red"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:paddingStart="8dp" />
     </LinearLayout>
 
