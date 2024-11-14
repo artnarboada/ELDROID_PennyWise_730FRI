@@ -1,12 +1,10 @@
-package com.eldroid.pennywise;
+package user_financial_management;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.eldroid.pennywise.R;
 
 public class Budget_Planning extends AppCompatActivity {
 

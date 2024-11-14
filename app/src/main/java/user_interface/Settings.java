@@ -1,15 +1,13 @@
-package com.eldroid.pennywise;
+package user_interface;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.eldroid.pennywise.R;
 
 public class Settings extends AppCompatActivity {
 

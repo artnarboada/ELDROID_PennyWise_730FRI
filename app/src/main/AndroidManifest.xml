@@ -13,28 +13,28 @@
         android:theme="@style/Theme.PennyWise"
         tools:targetApi="31">
         <activity
-            android:name=".Settings"
+            android:name="user_interface.Settings"
             android:exported="false" />
         <activity
-            android:name=".Category"
+            android:name="user_financial_management.Category"
             android:exported="false" />
         <activity
-            android:name=".Expense"
+            android:name="user_financial_management.Expense"
             android:exported="false" />
         <activity
-            android:name=".Budget_Planning"
+            android:name="user_financial_management.Budget_Planning"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
+            android:name="user_interface.Dashboard"
             android:exported="false" />
         <activity
-            android:name=".VerifyEmail"
+            android:name="user_authentication.VerifyEmail"
             android:exported="false" />
         <activity
-            android:name=".Forgot_Password"
+            android:name="user_authentication.Forgot_Password"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name="user_authentication.Register"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

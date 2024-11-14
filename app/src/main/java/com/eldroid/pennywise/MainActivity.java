@@ -6,11 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import user_authentication.Forgot_Password;
+import user_authentication.Register;
+import user_interface.Dashboard;
 
 public class MainActivity extends AppCompatActivity {
 
