@@ -7,13 +7,13 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@drawable/bg4"
-    android:layout_margin="16dp"
     tools:context="user_interface.Dashboard">
 
     <RelativeLayout
         android:id="@+id/welcomeMessage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
 
         <!-- Welcome Message and User Profile -->
         <TextView

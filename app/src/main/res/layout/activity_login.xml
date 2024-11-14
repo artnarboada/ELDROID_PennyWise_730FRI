@@ -6,15 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="16dp"
     android:background="@drawable/auth_bg"
-    tools:context=".MainActivity">
+    tools:context="user_authentication.LoginActivity">
 
-   <ImageView
-       android:layout_width="match_parent"
-       android:layout_height="290dp"
-       android:layout_marginTop="30dp"
-       android:src="@drawable/logo"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/logo"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

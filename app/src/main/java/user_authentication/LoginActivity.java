@@ -1,4 +1,4 @@
-package com.eldroid.pennywise;
+package user_authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,18 +6,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-import user_authentication.Forgot_Password;
-import user_authentication.Register;
+import com.eldroid.pennywise.MainActivity;
+import com.eldroid.pennywise.R;
+
 import user_interface.Dashboard;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         //login button
         Button loginButton = findViewById(R.id.login_button);
@@ -25,9 +30,8 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                Intent intent = new Intent(LoginActivity.this, Dashboard.class);
                 startActivity(intent);
-
 
             }
         });
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Forgot_Password.class);
+                Intent intent = new Intent(LoginActivity.this, Forgot_Password.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity.this, Register.class);
+                Intent intent = new Intent(LoginActivity.this, Register.class);
                 startActivity(intent);
 
             }
