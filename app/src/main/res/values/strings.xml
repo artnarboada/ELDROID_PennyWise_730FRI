@@ -49,9 +49,10 @@
 
     //Temporary array for dropdown
     <string-array name="dropdown_options">
-        <item>Option 1</item>
-        <item>Option 2</item>
-        <item>Option 3</item>
+        <item> </item>
+        <item>Travel</item>
+        <item>Food</item>
+        <item>Accommodation</item>
     </string-array>
 
 

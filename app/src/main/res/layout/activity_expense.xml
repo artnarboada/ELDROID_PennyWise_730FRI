@@ -72,8 +72,10 @@
         android:layout_marginBottom="4dp"/>
 
     <EditText
+        android:id="@+id/expenseName"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:inputType="textCapWords"
         android:background="@drawable/text_box"
         android:padding="8dp"
         android:textColor="@color/red"
@@ -116,6 +118,7 @@
         android:layout_marginBottom="4dp"/>
 
     <EditText
+        android:id="@+id/amountEdit"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/text_box"
@@ -138,6 +141,7 @@
         android:layout_marginBottom="4dp"/>
 
     <EditText
+        android:id="@+id/descriptionEdit"
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:background="@drawable/text_box"
@@ -150,6 +154,7 @@
 
     <!-- Add Plan Button -->
     <Button
+        android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:text="@string/Exp_btn"
