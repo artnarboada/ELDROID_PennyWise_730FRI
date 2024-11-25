@@ -65,7 +65,7 @@ public class Expense extends AppCompatActivity {
         }
 
         // Check if a category is selected
-        if (categorySpinner.getSelectedItemPosition() == 0) { // Assuming the first item is a "Select" option
+        if (categorySpinner.getSelectedItemPosition() == 0) {
             Toast.makeText(this, "Please select a category", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -77,7 +77,7 @@ public class Expense extends AppCompatActivity {
             return false;
         }
 
-        // Optionally, you could also check if the entered amount is a valid number.
+        // check if the user entered a valid amount
         try {
             Double.parseDouble(amountEditText.getText().toString().trim());
         } catch (NumberFormatException e) {

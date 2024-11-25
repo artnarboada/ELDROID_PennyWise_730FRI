@@ -71,6 +71,7 @@
         android:layout_marginBottom="4dp"/>
 
     <EditText
+        android:id="@+id/categoryEditText"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/text_box"
@@ -108,7 +109,7 @@
             android:layout_marginStart="15dp"
             android:background="@drawable/foodred"/>
         <ImageButton
-            android:id="@+id/accomadation_Icon"
+            android:id="@+id/accommodation_Icon"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginStart="15dp"
@@ -139,8 +140,10 @@
         android:layout_marginBottom="4dp"/>
 
     <EditText
+        android:id="@+id/descriptionEdit"
         android:layout_width="match_parent"
         android:layout_height="170dp"
+        android:gravity="start"
         android:background="@drawable/text_box"
         android:padding="8dp"
         android:textColor="@color/red"
@@ -150,6 +153,7 @@
         android:layout_marginEnd="15dp"/>
 
     <Button
+        android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:text="@string/Exp_btn"

@@ -144,6 +144,7 @@
         android:id="@+id/descriptionEdit"
         android:layout_width="match_parent"
         android:layout_height="170dp"
+        android:gravity="start"
         android:background="@drawable/text_box"
         android:padding="8dp"
         android:textColor="@color/red"
