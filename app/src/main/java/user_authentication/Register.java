@@ -13,6 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.eldroid.pennywise.MainActivity;
 import com.eldroid.pennywise.R;
 
+import API.ApiService;
+import API.RetrofitClient;
+import Models.User;
+import Models.UserResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Register extends AppCompatActivity {
 
     private EditText emailEditText, passwordEditText, confirmPasswordEditText;
@@ -43,7 +51,8 @@ public class Register extends AppCompatActivity {
         loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Register.this, LoginActivity.class); // Navigate to login screen
+                // Navigate to login screen
+                Intent intent = new Intent(Register.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -86,11 +95,30 @@ public class Register extends AppCompatActivity {
             return;
         }
 
-        // If validation passes, show success message
-        Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
+        // Create a new User object to send to the backend (without full name)
+        User newUser = new User(email, password);
 
-        // Navigate to login screen (MainActivity)
-        Intent intent = new Intent(Register.this, MainActivity.class);
-        startActivity(intent);
+        // Make the API call to register the user
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+        Call<UserResponse> call = apiService.registerUser(newUser);
+
+        call.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(Register.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                    // Navigate to the main screen (or login screen)
+                    Intent intent = new Intent(Register.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(Register.this, "Registration failed: " + response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toast.makeText(Register.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
