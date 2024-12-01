@@ -31,16 +31,14 @@
                 android:layout_weight="1"
                 android:text="Budget Limit per Category"
                 android:textColor="@color/red"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="16sp" />
 
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_weight="1"
-                android:thumbTint="@color/red"
-                tools:ignore="DuplicateSpeakableTextCheck,UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+                android:thumbTint="@color/red" />
         </LinearLayout>
 
         <SeekBar
@@ -66,8 +64,7 @@
                 android:layout_marginStart="40dp"
                 android:textColor="@color/red"
                 android:layout_weight="1"
-                android:textSize="12sp"
-                tools:ignore="HardcodedText,InefficientWeight" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -75,8 +72,7 @@
                 android:text="1000000"
                 android:layout_marginEnd="40dp"
                 android:textColor="@color/red"
-                android:textSize="12sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <!-- Budget Limit per Expense Section -->
@@ -93,15 +89,13 @@
                 android:text="Budget Limit per Expense"
                 android:textColor="@color/red"
                 android:layout_marginStart="20dp"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText,InefficientWeight" />
+                android:textSize="16sp" />
 
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:thumbTint="@color/red"
-                tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+                android:thumbTint="@color/red" />
         </LinearLayout>
 
         <SeekBar
@@ -127,8 +121,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="40dp"
                 android:textColor="@color/red"
-                android:textSize="12sp"
-                tools:ignore="HardcodedText,InefficientWeight" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -136,8 +129,7 @@
                 android:text="1000000"
                 android:layout_marginEnd="40dp"
                 android:textColor="@color/red"
-                android:textSize="12sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <!-- About App Button -->
@@ -147,14 +139,12 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_marginTop="50dp"
-            android:layout_marginBottom="16dp"
-            tools:ignore="UseCompoundDrawables">
+            android:layout_marginBottom="16dp">
 
             <ImageView
                 android:layout_width="34dp"
                 android:layout_height="34dp"
-                android:background="@drawable/logo"
-                tools:ignore="ContentDescription" />
+                android:background="@drawable/logo" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -162,8 +152,7 @@
                 android:text="About App"
                 android:textColor="@color/red"
                 android:textSize="18sp"
-                android:layout_marginStart="8dp"
-                tools:ignore="HardcodedText" />
+                android:layout_marginStart="8dp" />
         </LinearLayout>
 
         <!-- Logout Button -->
@@ -174,81 +163,24 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="24dp">
 
-<!--            <ImageView-->
-<!--                android:layout_width="24dp"-->
-<!--                android:layout_height="24dp"-->
-<!--                android:src="" />-->
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Logout"
                 android:textColor="@color/red"
                 android:textSize="18sp"
-                android:layout_marginStart="8dp"
-                tools:ignore="HardcodedText" />
+                android:layout_marginStart="8dp" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <!-- Dashboard positioned at the bottom of the screen -->
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/dashboard_box"
-        android:layout_alignParentBottom="true">
-
-
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="10dp"
-            android:focusable="true"
-            android:clickable="true"
-            android:src="@drawable/dashboard"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/dashboard_cover"
-            android:layout_margin="10dp">
-
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/settings"
-                android:layout_gravity="center_horizontal"
-
-                android:layout_marginStart="20dp"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:text="Settings"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText,TextContrastCheck" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/profile"
-            android:layout_marginEnd="20dp"
-            tools:ignore="ContentDescription" />
-    </LinearLayout>
-
+    <!-- Navigation Settings -->
+    <ImageView
+        android:id="@+id/settings"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/settings" />
 </RelativeLayout>
