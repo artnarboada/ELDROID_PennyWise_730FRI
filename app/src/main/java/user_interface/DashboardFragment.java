@@ -28,7 +28,7 @@ import user_financial_management.ExpenseAdapter;
 
 import com.eldroid.pennywise.R;
 
-public class Dashboard extends AppCompatActivity {
+public class DashboardFragment extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ExpenseAdapter expenseAdapter;
@@ -57,26 +57,26 @@ public class Dashboard extends AppCompatActivity {
     private void setupNavigationButtons() {
         ImageView toBudget = findViewById(R.id.budget);
         toBudget.setOnClickListener(view -> {
-            Intent intent = new Intent(Dashboard.this, Budget_Planning.class);
+            Intent intent = new Intent(DashboardFragment.this, Budget_Planning.class);
             startActivity(intent);
         });
 
         ImageView toExpense = findViewById(R.id.expense);
         toExpense.setOnClickListener(view -> {
-            Intent intent = new Intent(Dashboard.this, Expense.class);
+            Intent intent = new Intent(DashboardFragment.this, Expense.class);
             startActivity(intent);
         });
 
         ImageView toCategory = findViewById(R.id.category);
         toCategory.setOnClickListener(view -> {
-            Intent intent = new Intent(Dashboard.this, Category.class);
+            Intent intent = new Intent(DashboardFragment.this, Category.class);
             startActivity(intent);
         });
 
         ImageView toSettings = findViewById(R.id.settings);
         if (toSettings != null) {
             toSettings.setOnClickListener(view -> {
-                Intent intent = new Intent(Dashboard.this, Settings.class);
+                Intent intent = new Intent(DashboardFragment.this, SettingsFragment.class);
                 startActivity(intent);
             });
         } else {
@@ -106,13 +106,13 @@ public class Dashboard extends AppCompatActivity {
                     // Update the budget summary after fetching expenses
                     updateBudgetSummary();
                 } else {
-                    Toast.makeText(Dashboard.this, "Failed to fetch expenses", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DashboardFragment.this, "Failed to fetch expenses", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<ExpenseData>> call, Throwable t) {
-                Toast.makeText(Dashboard.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(DashboardFragment.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("Dashboard", "Error fetching expenses", t);
             }
         });
@@ -137,13 +137,13 @@ public class Dashboard extends AppCompatActivity {
                     // Update the budget summary TextView
                     updateBudgetSummary();
                 } else {
-                    Toast.makeText(Dashboard.this, "Failed to fetch budgets", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DashboardFragment.this, "Failed to fetch budgets", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<BudgetData>> call, Throwable t) {
-                Toast.makeText(Dashboard.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(DashboardFragment.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("Dashboard", "Error fetching budgets", t);
             }
         });

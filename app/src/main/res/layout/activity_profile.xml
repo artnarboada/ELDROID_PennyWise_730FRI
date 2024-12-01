@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/bg5"
+    tools:context="user_interface.ProfileFragment">
+
+    <ImageView
+        android:id="@+id/profile_picture"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/pp_placeholder"
+        android:layout_marginTop="35dp" />
+
+    <ImageView
+        android:id="@+id/edit_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@id/profile_picture"
+        android:layout_alignEnd="@id/profile_picture"
+        android:layout_marginEnd="-8dp"
+        android:layout_marginBottom="-8dp"
+        android:src="@drawable/editprofile" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_picture"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Penny Wise"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:text="pennywise@gmail.com"
+        android:textColor="@color/red"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/edit_profile_button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Edit Profile"
+        android:background="@drawable/button_edit_profile"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/red" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/edit_profile_button"
+        android:layout_marginTop="32dp"
+        android:background="#FF8888" />
+
+    <TextView
+        android:id="@+id/general_settings_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text="General Settings"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/change_password_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/general_settings_header"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/key_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/changepass" />
+
+        <TextView
+            android:id="@+id/change_password_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="center_vertical"
+            android:text="Change Password"
+            android:textColor="@color/red"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</RelativeLayout>

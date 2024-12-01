@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@drawable/bg4"
-    tools:context="user_interface.Dashboard">
+    tools:context="user_interface.DashboardFragment">
 
     <RelativeLayout
         android:id="@+id/welcomeMessage"

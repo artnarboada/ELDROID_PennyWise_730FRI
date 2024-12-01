@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,18 +15,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.eldroid.pennywise.R;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import API.ApiService;
 import API.RetrofitClient;
 import Models.LoginRequest;
 import Models.UserResponse;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import user_interface.Dashboard;
+import user_interface.DashboardFragment;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText emailEditText, passwordEditText;
@@ -112,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
 
                         // Navigate to the Dashboard
-                        Intent intent = new Intent(LoginActivity.this, Dashboard.class);
+                        Intent intent = new Intent(LoginActivity.this, DashboardFragment.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(LoginActivity.this, "Invalid response from server.", Toast.LENGTH_SHORT).show();

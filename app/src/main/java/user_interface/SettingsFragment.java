@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.eldroid.pennywise.R;
 
-public class Settings extends AppCompatActivity {
+public class SettingsFragment extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class Settings extends AppCompatActivity {
         toHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Settings.this, Dashboard.class);
+                Intent intent = new Intent(SettingsFragment.this, DashboardFragment.class);
                 startActivity(intent);
             }
         });
