@@ -11,11 +11,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.eldroid.pennywise.R;
+import API.RetrofitClient;
+import API.ApiService;
+import Models.CategoryData;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Category extends AppCompatActivity {
 
-    // Variables to track icon selection
     private boolean isAnyIconSelected = false;
+    private String selectedIcon = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +30,7 @@ public class Category extends AppCompatActivity {
 
         // Back Button
         LinearLayout backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        backBtn.setOnClickListener(view -> finish());
 
         // EditText fields and Submit Button
         EditText categoryEditText = findViewById(R.id.categoryEditText);
@@ -43,11 +44,19 @@ public class Category extends AppCompatActivity {
         ImageButton bookIcon = findViewById(R.id.book_Icon);
         ImageButton docsIcon = findViewById(R.id.docs_Icon);
 
-        // Icon selection logic
-        View.OnClickListener iconClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isAnyIconSelected = true;
+        // Icon selection logic using if-else
+        View.OnClickListener iconClickListener = view -> {
+            isAnyIconSelected = true;
+            if (view.getId() == R.id.travel_Icon) {
+                selectedIcon = "travel";
+            } else if (view.getId() == R.id.food_Icon) {
+                selectedIcon = "food";
+            } else if (view.getId() == R.id.accommodation_Icon) {
+                selectedIcon = "accommodation";
+            } else if (view.getId() == R.id.book_Icon) {
+                selectedIcon = "book";
+            } else if (view.getId() == R.id.docs_Icon) {
+                selectedIcon = "docs";
             }
         };
 
@@ -57,23 +66,44 @@ public class Category extends AppCompatActivity {
         bookIcon.setOnClickListener(iconClickListener);
         docsIcon.setOnClickListener(iconClickListener);
 
-        submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String categoryText = categoryEditText.getText().toString().trim();
-                String descriptionText = descriptionEdit.getText().toString().trim();
+        // Submit Button Click Listener
+        submitBtn.setOnClickListener(view -> {
+            String categoryText = categoryEditText.getText().toString().trim();
+            String descriptionText = descriptionEdit.getText().toString().trim();
 
-                if (categoryText.isEmpty()) {
-                    // Show error for empty category
-                    categoryEditText.setError("Category is required");
-                    categoryEditText.requestFocus();
-                } else if (descriptionText.isEmpty()) {
-                    // Show error for empty description
-                    descriptionEdit.setError("Description is required");
-                    descriptionEdit.requestFocus();
-                } else if (!isAnyIconSelected) {
-                    Toast.makeText(Category.this, "Choose icon", Toast.LENGTH_SHORT).show();
-                }
+            if (categoryText.isEmpty()) {
+                categoryEditText.setError("Category is required");
+                categoryEditText.requestFocus();
+            } else if (descriptionText.isEmpty()) {
+                descriptionEdit.setError("Description is required");
+                descriptionEdit.requestFocus();
+            } else if (!isAnyIconSelected) {
+                Toast.makeText(Category.this, "Choose icon", Toast.LENGTH_SHORT).show();
+            } else {
+                // Create category data object
+                CategoryData categoryData = new CategoryData(categoryText, descriptionText, selectedIcon);
+
+                // Call the API
+                ApiService categoryApi = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+                Call<Void> call = categoryApi.createCategory(categoryData);
+
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(Category.this, "Category created successfully!", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            String errorMessage = "Error: " + response.code();
+                            Toast.makeText(Category.this, errorMessage, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(Category.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }

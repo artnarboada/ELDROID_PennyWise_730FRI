@@ -1,6 +1,7 @@
 package user_financial_management;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.eldroid.pennywise.R;
+
+import API.ApiService;
+import API.RetrofitClient;
+import Models.BudgetData;
+import Models.BudgetResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Budget_Planning extends AppCompatActivity {
 
@@ -46,9 +55,53 @@ public class Budget_Planning extends AppCompatActivity {
                 String budget = budgetEditText.getText().toString().trim();
                 String notes = noteEditText.getText().toString().trim();
 
-                Toast.makeText(this, "Budget Added", Toast.LENGTH_SHORT).show();
+                // Get the category ID based on the selected category
+                int categoryID = getCategoryID(selectedCategory);
 
-                // Logic to save the data (e.g., to a database) can be added here
+                // Convert the budget to a double
+                double budgetLimit;
+                try {
+                    budgetLimit = Double.parseDouble(budget);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Invalid budget value", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Create a BudgetData object
+                BudgetData budgetData = new BudgetData(1, categoryID, budgetLimit, notes); // Assuming userID = 1 for testing
+
+                // Show progress dialog while making API call
+                ProgressDialog progressDialog = new ProgressDialog(this);
+                progressDialog.setMessage("Adding budget...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+
+                // Call the API to create the budget
+                ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+                Call<BudgetResponse> call = apiService.createBudget(budgetData);
+
+                call.enqueue(new Callback<BudgetResponse>() {
+                    @Override
+                    public void onResponse(Call<BudgetResponse> call, Response<BudgetResponse> response) {
+                        progressDialog.dismiss();
+                        if (response.isSuccessful()) {
+                            BudgetResponse budgetResponse = response.body();
+                            if (budgetResponse != null && budgetResponse.getMessage().equals("Budget created successfully")) {
+                                Toast.makeText(Budget_Planning.this, "Budget Added Successfully", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(Budget_Planning.this, "Failed to add budget", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(Budget_Planning.this, "Failed to add budget", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BudgetResponse> call, Throwable t) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Budget_Planning.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
@@ -65,11 +118,8 @@ public class Budget_Planning extends AppCompatActivity {
         int selectedRadioId = categoryRadioGroup.getCheckedRadioButtonId();
         if (selectedRadioId == -1) {
             // No category selected
-            Log.d("BudgetPlanning", "No category selected. RadioGroup ID: " + categoryRadioGroup.getId());
             Toast.makeText(this, "Please select a category", Toast.LENGTH_SHORT).show();
             return false; // Stop further validation
-        } else {
-            Log.d("BudgetPlanning", "Selected category ID: " + selectedRadioId);
         }
 
         // Validate the EditText associated with the selected category
@@ -102,5 +152,18 @@ public class Budget_Planning extends AppCompatActivity {
             return "Accommodation";
         }
         return "Unknown";
+    }
+
+    private int getCategoryID(String category) {
+        // Use if-else to map category name to categoryID
+        if (category.equals("Travel")) {
+            return 1;
+        } else if (category.equals("Food")) {
+            return 2;
+        } else if (category.equals("Accommodation")) {
+            return 3;
+        } else {
+            return 0; // Default ID (should be handled)
+        }
     }
 }

@@ -1,5 +1,6 @@
 package user_financial_management;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -8,10 +9,17 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+import com.eldroid.pennywise.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.eldroid.pennywise.R;
+import Models.ExpenseData;
+import API.ApiService;
+import API.RetrofitClient;
+import Models.ExpenseResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Expense extends AppCompatActivity {
 
@@ -33,9 +41,9 @@ public class Expense extends AppCompatActivity {
 
         // Set up the category spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.dropdown_options, // Assuming the options are defined in strings.xml
-            R.layout.spinner_item
+                this,
+                R.array.dropdown_options, // Assuming the options are defined in strings.xml
+                R.layout.spinner_item
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
@@ -50,8 +58,40 @@ public class Expense extends AppCompatActivity {
                 String category = categorySpinner.getSelectedItem().toString();
                 String amount = amountEditText.getText().toString().trim();
 
-                // Logic to save the expense details (e.g., save to a database)
-                Toast.makeText(this, "Expense Submitted", Toast.LENGTH_SHORT).show();
+                // Assuming userID and categoryID are already known
+                int userID = 1; // Replace with actual user ID
+                int categoryID = getCategoryID(category);
+                double expenseAmount = Double.parseDouble(amount);
+
+                ExpenseData expenseData = new ExpenseData(userID, categoryID, expenseName, expenseAmount, ""); // Optional description
+
+                // Show progress dialog
+                ProgressDialog progressDialog = new ProgressDialog(this);
+                progressDialog.setMessage("Submitting expense...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+
+                // API call to create the expense
+                ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+                Call<ExpenseResponse> call = apiService.createExpense(expenseData);
+
+                call.enqueue(new Callback<ExpenseResponse>() {
+                    @Override
+                    public void onResponse(Call<ExpenseResponse> call, Response<ExpenseResponse> response) {
+                        progressDialog.dismiss();
+                        if (response.isSuccessful()) {
+                            Toast.makeText(Expense.this, "Expense Created Successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Expense.this, "Failed to create expense", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ExpenseResponse> call, Throwable t) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Expense.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
@@ -87,5 +127,14 @@ public class Expense extends AppCompatActivity {
         }
 
         return true;
+    }
+    private int getCategoryID(String category) {
+        if (category.equals("Travel")) {
+            return 1;
+        } else if (category.equals("Food")) {
+            return 2;
+        } else {
+            return 0; // Default category ID
+        }
     }
 }
