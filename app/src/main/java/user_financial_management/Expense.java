@@ -1,6 +1,7 @@
 package user_financial_management;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,6 +21,7 @@ import Models.ExpenseResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import user_interface.Dashboard;
 
 public class Expense extends AppCompatActivity {
 
@@ -81,6 +83,10 @@ public class Expense extends AppCompatActivity {
                         progressDialog.dismiss();
                         if (response.isSuccessful()) {
                             Toast.makeText(Expense.this, "Expense Created Successfully", Toast.LENGTH_SHORT).show();
+                            // Navigate to Dashboard
+                            Intent intent = new Intent(Expense.this, Dashboard.class);
+                            startActivity(intent);
+                            finish(); // Optional: finish this activity
                         } else {
                             Toast.makeText(Expense.this, "Failed to create expense", Toast.LENGTH_SHORT).show();
                         }

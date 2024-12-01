@@ -2,6 +2,7 @@ package user_financial_management;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,7 @@ import Models.BudgetResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import user_interface.Dashboard;
 
 public class Budget_Planning extends AppCompatActivity {
 
@@ -88,6 +90,10 @@ public class Budget_Planning extends AppCompatActivity {
                             BudgetResponse budgetResponse = response.body();
                             if (budgetResponse != null && budgetResponse.getMessage().equals("Budget created successfully")) {
                                 Toast.makeText(Budget_Planning.this, "Budget Added Successfully", Toast.LENGTH_SHORT).show();
+
+                                // Navigate to Dashboard after successful budget addition
+                                Intent intent = new Intent(Budget_Planning.this, Dashboard.class);
+                                startActivity(intent);
                             } else {
                                 Toast.makeText(Budget_Planning.this, "Failed to add budget", Toast.LENGTH_SHORT).show();
                             }

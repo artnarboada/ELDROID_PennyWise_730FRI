@@ -32,6 +32,12 @@ public interface ApiService {
     @POST("expenses")
     Call<ExpenseResponse> createExpense(@Body ExpenseData expenseData);
 
+    @GET("budgets") // Ensure this matches your API route
+    Call<List<BudgetData>> getBudgets();
+
+    @GET("expenses") // Ensure this matches your API route
+    Call<List<ExpenseData>> getExpenses();
+
 //    @GET("verify-email")
 //    Call<GenericResponse> verifyEmail(@Body VerifyEmailRequest verifyEmailRequest);
 //
