@@ -1,5 +1,6 @@
 package API;
 
+import Models.LoginRequest;
 import Models.User;
 import Models.UserResponse;
 import retrofit2.Call;
@@ -12,6 +13,8 @@ public interface ApiService {
     @POST("register")
     Call<UserResponse> registerUser(@Body User user);
 
+    @POST("login")
+    Call<UserResponse> login(@Body LoginRequest loginRequest);
 //    @POST("login")
 //    Call<LoginResponse> login(@Body LoginRequest loginRequest);
 //
