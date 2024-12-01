@@ -4,11 +4,16 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,7 +33,7 @@ import user_financial_management.ExpenseAdapter;
 
 import com.eldroid.pennywise.R;
 
-public class DashboardFragment extends AppCompatActivity {
+public class DashboardFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ExpenseAdapter expenseAdapter;
@@ -36,47 +41,49 @@ public class DashboardFragment extends AppCompatActivity {
     private double totalBudgetLimit = 0.0; // Variable to hold the total budget limit
     private double totalExpense = 0.0; // Variable to hold the total expenses
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_dashboard, container, false);
 
-        recyclerView = findViewById(R.id.expense_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView = view.findViewById(R.id.expense_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        budgetSummary = findViewById(R.id.budgetSummary); // Initialize the budget summary TextView
+        budgetSummary = view.findViewById(R.id.budgetSummary); // Initialize the budget summary TextView
 
         // Fetch expenses and budgets
         fetchBudgets();
         fetchExpenses();
 
         // Navigation buttons
-        setupNavigationButtons();
+        setupNavigationButtons(view);
+
+        return view;
     }
 
-    private void setupNavigationButtons() {
-        ImageView toBudget = findViewById(R.id.budget);
-        toBudget.setOnClickListener(view -> {
-            Intent intent = new Intent(DashboardFragment.this, Budget_Planning.class);
+    private void setupNavigationButtons(View view) {
+        ImageView toBudget = view.findViewById(R.id.budget);
+        toBudget.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), Budget_Planning.class);
             startActivity(intent);
         });
 
-        ImageView toExpense = findViewById(R.id.expense);
-        toExpense.setOnClickListener(view -> {
-            Intent intent = new Intent(DashboardFragment.this, Expense.class);
+        ImageView toExpense = view.findViewById(R.id.expense);
+        toExpense.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), Expense.class);
             startActivity(intent);
         });
 
-        ImageView toCategory = findViewById(R.id.category);
-        toCategory.setOnClickListener(view -> {
-            Intent intent = new Intent(DashboardFragment.this, Category.class);
+        ImageView toCategory = view.findViewById(R.id.category);
+        toCategory.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), Category.class);
             startActivity(intent);
         });
 
-        ImageView toSettings = findViewById(R.id.settings);
+        ImageView toSettings = view.findViewById(R.id.settings);
         if (toSettings != null) {
-            toSettings.setOnClickListener(view -> {
-                Intent intent = new Intent(DashboardFragment.this, SettingsFragment.class);
+            toSettings.setOnClickListener(v -> {
+                Intent intent = new Intent(requireContext(), SettingsFragment.class);
                 startActivity(intent);
             });
         } else {
@@ -106,13 +113,13 @@ public class DashboardFragment extends AppCompatActivity {
                     // Update the budget summary after fetching expenses
                     updateBudgetSummary();
                 } else {
-                    Toast.makeText(DashboardFragment.this, "Failed to fetch expenses", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Failed to fetch expenses", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<ExpenseData>> call, Throwable t) {
-                Toast.makeText(DashboardFragment.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("Dashboard", "Error fetching expenses", t);
             }
         });
@@ -137,13 +144,13 @@ public class DashboardFragment extends AppCompatActivity {
                     // Update the budget summary TextView
                     updateBudgetSummary();
                 } else {
-                    Toast.makeText(DashboardFragment.this, "Failed to fetch budgets", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Failed to fetch budgets", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<BudgetData>> call, Throwable t) {
-                Toast.makeText(DashboardFragment.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("Dashboard", "Error fetching budgets", t);
             }
         });

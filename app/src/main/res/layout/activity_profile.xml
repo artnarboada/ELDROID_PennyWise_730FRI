@@ -13,8 +13,9 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
         android:src="@drawable/pp_placeholder"
-        android:layout_marginTop="35dp" />
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/edit_icon"
@@ -24,7 +25,8 @@
         android:layout_alignEnd="@id/profile_picture"
         android:layout_marginEnd="-8dp"
         android:layout_marginBottom="-8dp"
-        android:src="@drawable/editprofile" />
+        android:src="@drawable/editprofile"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/profile_name"
@@ -36,7 +38,8 @@
         android:text="Penny Wise"
         android:textColor="@color/red"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/profile_email"
@@ -47,7 +50,8 @@
         android:layout_marginTop="4dp"
         android:text="pennywise@gmail.com"
         android:textColor="@color/red"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/edit_profile_button"
@@ -56,10 +60,11 @@
         android:layout_below="@id/profile_email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Edit Profile"
         android:background="@drawable/button_edit_profile"
         android:backgroundTint="@color/red"
-        android:textColor="@color/red" />
+        android:text="Edit Profile"
+        android:textColor="@color/red"
+        tools:ignore="HardcodedText,TextSizeCheck" />
 
     <View
         android:id="@+id/divider"
@@ -79,7 +84,8 @@
         android:text="General Settings"
         android:textColor="@color/red"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <LinearLayout
         android:id="@+id/change_password_option"
@@ -88,13 +94,15 @@
         android:layout_below="@id/general_settings_header"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:id="@+id/key_icon"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/changepass" />
+            android:src="@drawable/changepass"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/change_password_text"
@@ -104,7 +112,8 @@
             android:layout_gravity="center_vertical"
             android:text="Change Password"
             android:textColor="@color/red"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
 </RelativeLayout>

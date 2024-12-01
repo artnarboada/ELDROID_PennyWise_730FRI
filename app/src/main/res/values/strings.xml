@@ -72,4 +72,10 @@
     //Category
     <string name="Cat_name">Category Name</string>
     <string name="Cat_icons">Category Icons:</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+
+    //Navigators
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_settings">Settings</string>
 </resources>
