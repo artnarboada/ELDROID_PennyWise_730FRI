@@ -21,6 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import user_interface.DashboardFragment;
+import user_interface.NavigationActivity;
 
 public class Expense extends AppCompatActivity {
 
@@ -83,7 +84,7 @@ public class Expense extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             Toast.makeText(Expense.this, "Expense Created Successfully", Toast.LENGTH_SHORT).show();
                             // Navigate to Dashboard
-                            Intent intent = new Intent(Expense.this, DashboardFragment.class);
+                            Intent intent = new Intent(Expense.this, NavigationActivity.class);
                             startActivity(intent);
                             finish(); // Optional: finish this activity
                         } else {

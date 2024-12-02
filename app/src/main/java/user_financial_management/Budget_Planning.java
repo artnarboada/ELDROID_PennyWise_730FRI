@@ -22,6 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import user_interface.DashboardFragment;
+import user_interface.NavigationActivity;
 
 public class Budget_Planning extends AppCompatActivity {
 
@@ -90,7 +91,7 @@ public class Budget_Planning extends AppCompatActivity {
                                 Toast.makeText(Budget_Planning.this, "Budget Added Successfully", Toast.LENGTH_SHORT).show();
 
                                 // Navigate to Dashboard after successful budget addition
-                                Intent intent = new Intent(Budget_Planning.this, DashboardFragment.class);
+                                Intent intent = new Intent(Budget_Planning.this, NavigationActivity.class);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(Budget_Planning.this, "Failed to add budget", Toast.LENGTH_SHORT).show();
