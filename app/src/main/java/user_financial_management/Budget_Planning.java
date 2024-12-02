@@ -21,12 +21,11 @@ import Models.BudgetResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import user_interface.DashboardFragment;
 import user_interface.NavigationActivity;
 
 public class Budget_Planning extends AppCompatActivity {
 
-    private EditText budgetEditText, noteEditText, travelEditText, foodEditText, accommodationEditText;
+    private EditText budgetEditText, noteEditText;
     private RadioGroup categoryRadioGroup;
     private Button addPlanBtn;
 
@@ -43,9 +42,6 @@ public class Budget_Planning extends AppCompatActivity {
         // Initialize views
         budgetEditText = findViewById(R.id.budgetEditText);
         noteEditText = findViewById(R.id.noteEditText);
-        travelEditText = findViewById(R.id.travelEditText);
-        foodEditText = findViewById(R.id.foodEditText);
-        accommodationEditText = findViewById(R.id.accommodationEditText);
         categoryRadioGroup = findViewById(R.id.categoryRadioGroup);
         addPlanBtn = findViewById(R.id.addPlanBtn);
 
@@ -125,23 +121,6 @@ public class Budget_Planning extends AppCompatActivity {
             // No category selected
             Toast.makeText(this, "Please select a category", Toast.LENGTH_SHORT).show();
             return false; // Stop further validation
-        }
-
-        // Validate the EditText associated with the selected category
-        EditText selectedCategoryEditText = null;
-        if (selectedRadioId == R.id.travelRadioButton) {
-            selectedCategoryEditText = travelEditText;
-        } else if (selectedRadioId == R.id.foodRadioButton) {
-            selectedCategoryEditText = foodEditText;
-        } else if (selectedRadioId == R.id.accommodationRadioButton) {
-            selectedCategoryEditText = accommodationEditText;
-        }
-
-        // Check if the category-specific EditText is filled
-        if (selectedCategoryEditText != null && selectedCategoryEditText.getText().toString().trim().isEmpty()) {
-            selectedCategoryEditText.setError("Please enter details for the selected category");
-            selectedCategoryEditText.requestFocus();
-            return false;
         }
 
         return true;

@@ -2,39 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <!-- Expense Item Example -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_red_background"
-        android:padding="16dp"
-        android:layout_marginBottom="8dp">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/amountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="P5,500.50"
+            android:textColor="@android:color/white"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="Travel"
-            android:textSize="16sp"
             android:textColor="@android:color/white"
-            android:layout_marginTop="4dp" />
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -42,14 +43,13 @@
 
             <TextView
                 android:id="@+id/categoryTextView"
-                android:layout_width="44dp"
-                android:layout_height="35dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:textSize="16sp"
-                android:textColor="@color/white"
+                android:layout_marginTop="8dp"
                 android:text="Travel"
-                android:layout_marginTop="8dp" />
+                android:textColor="@color/white"
+                android:textSize="16sp" />
         </LinearLayout>
-
     </LinearLayout>
 </LinearLayout>

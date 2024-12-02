@@ -3,12 +3,11 @@ package Models;
 public class CategoryData {
     private String categoryName;
     private String categoryDescription;
-    private String categoryIcon;
 
-    public CategoryData(String categoryName, String categoryDescription, String categoryIcon) {
+    // Constructor
+    public CategoryData(String categoryName, String categoryDescription) {
         this.categoryName = categoryName;
         this.categoryDescription = categoryDescription;
-        this.categoryIcon = categoryIcon;
     }
 
     // Getters and setters
@@ -28,12 +27,9 @@ public class CategoryData {
         this.categoryDescription = categoryDescription;
     }
 
-    public String getCategoryIcon() {
-        return categoryIcon;
-    }
-
-    public void setCategoryIcon(String categoryIcon) {
-        this.categoryIcon = categoryIcon;
+    // Override toString to display category name in Spinner
+    @Override
+    public String toString() {
+        return categoryName;  // Return category name for Spinner display
     }
 }
-

@@ -74,7 +74,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ex_sum"
+            android:text="Total Budget"
             android:textSize="14sp"
             android:textColor="@android:color/white"
             android:layout_marginTop="4dp" />
@@ -232,6 +232,6 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/expense_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
     </LinearLayout>
 </RelativeLayout>

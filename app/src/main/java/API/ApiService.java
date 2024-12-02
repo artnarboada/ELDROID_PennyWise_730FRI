@@ -26,6 +26,9 @@ public interface ApiService {
     @POST("categories")
     Call<Void> createCategory(@Body CategoryData categoryData);
 
+    @GET("categories")
+    Call<List<CategoryData>> getCategories();
+
     @POST("budgets")
     Call<BudgetResponse> createBudget(@Body BudgetData budgetData);
 

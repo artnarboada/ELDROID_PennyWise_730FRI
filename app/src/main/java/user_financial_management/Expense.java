@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import com.eldroid.pennywise.R;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,6 @@ import Models.ExpenseResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import user_interface.DashboardFragment;
 import user_interface.NavigationActivity;
 
 public class Expense extends AppCompatActivity {
@@ -123,7 +123,7 @@ public class Expense extends AppCompatActivity {
             return false;
         }
 
-        // check if the user entered a valid amount
+        // Check if the user entered a valid amount
         try {
             Double.parseDouble(amountEditText.getText().toString().trim());
         } catch (NumberFormatException e) {
@@ -134,11 +134,14 @@ public class Expense extends AppCompatActivity {
 
         return true;
     }
+
     private int getCategoryID(String category) {
         if (category.equals("Travel")) {
             return 1;
         } else if (category.equals("Food")) {
             return 2;
+        } else if (category.equals("Accommodation")) {
+            return 3;
         } else {
             return 0; // Default category ID
         }

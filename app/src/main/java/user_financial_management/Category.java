@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -20,9 +19,6 @@ import retrofit2.Response;
 
 public class Category extends AppCompatActivity {
 
-    private boolean isAnyIconSelected = false;
-    private String selectedIcon = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,35 +33,6 @@ public class Category extends AppCompatActivity {
         EditText descriptionEdit = findViewById(R.id.descriptionEdit);
         Button submitBtn = findViewById(R.id.submitBtn);
 
-        // Icon buttons
-        ImageButton travelIcon = findViewById(R.id.travel_Icon);
-        ImageButton foodIcon = findViewById(R.id.food_Icon);
-        ImageButton accommodationIcon = findViewById(R.id.accommodation_Icon);
-        ImageButton bookIcon = findViewById(R.id.book_Icon);
-        ImageButton docsIcon = findViewById(R.id.docs_Icon);
-
-        // Icon selection logic using if-else
-        View.OnClickListener iconClickListener = view -> {
-            isAnyIconSelected = true;
-            if (view.getId() == R.id.travel_Icon) {
-                selectedIcon = "travel";
-            } else if (view.getId() == R.id.food_Icon) {
-                selectedIcon = "food";
-            } else if (view.getId() == R.id.accommodation_Icon) {
-                selectedIcon = "accommodation";
-            } else if (view.getId() == R.id.book_Icon) {
-                selectedIcon = "book";
-            } else if (view.getId() == R.id.docs_Icon) {
-                selectedIcon = "docs";
-            }
-        };
-
-        travelIcon.setOnClickListener(iconClickListener);
-        foodIcon.setOnClickListener(iconClickListener);
-        accommodationIcon.setOnClickListener(iconClickListener);
-        bookIcon.setOnClickListener(iconClickListener);
-        docsIcon.setOnClickListener(iconClickListener);
-
         // Submit Button Click Listener
         submitBtn.setOnClickListener(view -> {
             String categoryText = categoryEditText.getText().toString().trim();
@@ -77,11 +44,9 @@ public class Category extends AppCompatActivity {
             } else if (descriptionText.isEmpty()) {
                 descriptionEdit.setError("Description is required");
                 descriptionEdit.requestFocus();
-            } else if (!isAnyIconSelected) {
-                Toast.makeText(Category.this, "Choose icon", Toast.LENGTH_SHORT).show();
             } else {
-                // Create category data object
-                CategoryData categoryData = new CategoryData(categoryText, descriptionText, selectedIcon);
+                // Create category data object without an icon
+                CategoryData categoryData = new CategoryData(categoryText, descriptionText);
 
                 // Call the API
                 ApiService categoryApi = RetrofitClient.getRetrofitInstance().create(ApiService.class);
